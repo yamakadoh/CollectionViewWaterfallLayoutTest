@@ -47,16 +47,21 @@ class WebViewController: UIViewController, UIWebViewDelegate, UIGestureRecognize
         //toolbar.tintColor = UIColor.whiteColor()
         //toolbar.backgroundColor = UIColor.grayColor()
         
-        let buttonBack = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Rewind, target: self, action: "onTapToolbarBack:")   // Todo:標準で戻るボタンのアイコンが無いので差し替える
+        let imageBack = FAKIonIcons.ios7ArrowBackIconWithSize(26).imageWithSize(CGSize(width: 26, height: 26))
+        let buttonBack = UIBarButtonItem(image: imageBack, style: .Plain, target: self, action: "onTapToolbarBack:")
+        buttonBack.enabled = false   // TODO: あとで設定する
         buttonBack.tag = 1
         
         let buttonSpace1 = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: nil, action:nil)
         
-        let buttonForward = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FastForward, target: self, action: "onTapToolbarForward:")   // Todo:標準で戻るボタンのアイコンが無いので差し替える
+        let imageForward = FAKIonIcons.ios7ArrowForwardIconWithSize(26).imageWithSize(CGSize(width: 26, height: 26))
+        let buttonForward = UIBarButtonItem(image: imageForward, style: .Plain, target: self, action: "onTapToolbarForward:")
+        buttonForward.enabled = false   // TODO: あとで設定する
         
         let buttonSpace2 = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: nil, action:nil)
         
-        let buttonComment = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Compose, target: self, action: "onTapToolbarComment:")   // Todo:標準でボタンのアイコンが無いので差し替える
+        let imageComment = FAKFontAwesome.commentIconWithSize(26).imageWithSize(CGSize(width: 26, height: 26))
+        let buttonComment = UIBarButtonItem(image: imageComment, style: .Plain, target: self, action: "onTapToolbarComment:")
         
         let buttonSpace3 = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: nil, action:nil)
         
