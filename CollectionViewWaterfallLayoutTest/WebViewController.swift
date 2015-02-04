@@ -12,7 +12,6 @@ class WebViewController: UIViewController, UIWebViewDelegate, UIGestureRecognize
     let webView = UIWebView()
     
     var toolbar = UIToolbar()
-    var isShowToolBar = true // ツールバーの表示状態
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,7 +56,7 @@ class WebViewController: UIViewController, UIWebViewDelegate, UIGestureRecognize
         
         let buttonSpace2 = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: nil, action:nil)
         
-        let buttonComment = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Compose, target: self, action: "onTapToolbarComment:")   // Todo:標準で戻るボタンのアイコンが無いので差し替える
+        let buttonComment = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Compose, target: self, action: "onTapToolbarComment:")   // Todo:標準でボタンのアイコンが無いので差し替える
         
         let buttonSpace3 = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: nil, action:nil)
         
@@ -92,61 +91,11 @@ class WebViewController: UIViewController, UIWebViewDelegate, UIGestureRecognize
     // UIWebViewタップイベントハンドラ
     func onTapWebView(sender: UITapGestureRecognizer) -> Void {
         println("[onTapWebView]called")
-        
-        // ステータスバーとツールバーの表示を切り替える
-        isShowToolBar = !isShowToolBar
-        UIView.animateWithDuration(0.5, animations: {[unowned self]() -> Void in
-            var toolbarFrame = self.toolbar.frame
-            toolbarFrame.origin.y = self.toolbar.frame.origin.y + (44 * (self.isShowToolBar ? -1 : 1))
-            self.toolbar.frame = toolbarFrame
-        })
     }
     
     // UIWebViewドラッグイベントハンドラ
     func onPanWebView(sender: UIPanGestureRecognizer) -> Void {
         println("[onPanWebView]called")
-        
-        let point: CGPoint = sender.translationInView(self.view)
-        println("Point = (\(point.x), \(point.y))")
-        
-        // 上方向にドラッグ(WebViewのボトムへの移動操作)：ステータスバーとツールバーを非表示にする
-        // 下方向にドラッグ(WebViewのトップへの移動操作)：ステータスバーとツールバーを表示する
-        if sender.state == UIGestureRecognizerState.Began {
-            println(".Began")
-        }
-        if sender.state == UIGestureRecognizerState.Changed {
-            println(".Changed")
-        }
-        if sender.state == UIGestureRecognizerState.Ended {
-            println(".Ended")
-            // WebViewのボトムへの移動操作か
-            let isDragUp: Bool = point.y < 0    // TODO: しきい値を設定してちゃんと判定する
-            if isDragUp {
-                // ツールバーを非表示
-                if isShowToolBar {
-                    isShowToolBar = false
-                    UIView.animateWithDuration(0.5, animations: {[unowned self]() -> Void in
-                        var toolbarFrame = self.toolbar.frame
-                        toolbarFrame.origin.y = self.toolbar.frame.origin.y + 44
-                        self.toolbar.frame = toolbarFrame
-                    })
-                }
-            }
-            
-            // WebViewのトップへの移動操作か
-            let isDragDown: Bool = point.y > 0    // TODO: しきい値を設定してちゃんと判定する
-            if isDragDown {
-                // ツールバーを表示
-                if !isShowToolBar {
-                    isShowToolBar = true
-                    UIView.animateWithDuration(0.5, animations: {[unowned self]() -> Void in
-                        var toolbarFrame = self.toolbar.frame
-                        toolbarFrame.origin.y = self.toolbar.frame.origin.y - 44
-                        self.toolbar.frame = toolbarFrame
-                    })
-                }
-            }
-        }
     }
     
     // UIGestureRecognizerDelegate
