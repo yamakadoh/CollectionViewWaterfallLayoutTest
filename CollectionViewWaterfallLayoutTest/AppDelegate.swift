@@ -12,14 +12,10 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var navigationController: UINavigationController!
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         println("application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?)")
-        /*var */navigationController = self.window?.rootViewController as UINavigationController
-        navigationController.setNavigationBarHidden(true, animated: false)
-        navigationController.view.frame = CGRect(origin: CGPoint(x: 0, y: -20), size: self.window!.frame.size)
         
         return true
     }

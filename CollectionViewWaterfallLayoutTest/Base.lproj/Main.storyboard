@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="6AG-Nc-Iue">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="aaI-9N-t0J">
             <objects>
-                <viewController id="gw0-Y7-5gJ" customClass="ViewController" customModule="CollectionViewWaterfallLayoutTest" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="gw0-Y7-5gJ" customClass="ViewController" customModule="CollectionViewWaterfallLayoutTest" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="yqh-xp-5x5"/>
                         <viewControllerLayoutGuide type="bottom" id="QgW-cQ-HqR"/>
@@ -64,6 +65,7 @@
                             <constraint firstItem="cJd-pi-M2v" firstAttribute="bottom" secondItem="QgW-cQ-HqR" secondAttribute="top" id="lRR-K3-CGg"/>
                         </constraints>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" id="h68-gF-Ozg"/>
                     <connections>
                         <outlet property="collectionView" destination="cJd-pi-M2v" id="VQp-uk-YeE"/>
@@ -76,11 +78,14 @@
         <!--Navigation Controller-->
         <scene sceneID="TN5-Zt-Ye6">
             <objects>
-                <navigationController id="6AG-Nc-Iue" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="NavigationController" useStoryboardIdentifierAsRestorationIdentifier="YES" navigationBarHidden="YES" id="6AG-Nc-Iue" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ELD-Ef-Dt5">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="vbZ-Sb-81O">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="gw0-Y7-5gJ" kind="relationship" relationship="rootViewController" id="x6y-bI-PdE"/>
                     </connections>

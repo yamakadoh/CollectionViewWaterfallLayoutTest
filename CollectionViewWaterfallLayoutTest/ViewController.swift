@@ -40,7 +40,7 @@ class MyCollectionViewFooter: UICollectionReusableView {
 class MyCollectionViewCell: UICollectionViewCell {
 }
 
-class ViewController: UIViewController, UICollectionViewDataSource, CollectionViewWaterfallLayoutDelegate, UIGestureRecognizerDelegate, UINavigationBarDelegate {
+class ViewController: UIViewController, UICollectionViewDataSource, CollectionViewWaterfallLayoutDelegate, UIGestureRecognizerDelegate {
 
     @IBOutlet var collectionView: UICollectionView!
     var appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
@@ -81,19 +81,11 @@ class ViewController: UIViewController, UICollectionViewDataSource, CollectionVi
         gestureTap.delegate = self
         self.view.addGestureRecognizer(gestureTap)
 
-        // 落ちるからいったんコメントアウト
-        //self.navigationController?.navigationBar.delegate = self
-        //appDelegate.navigationController.navigationBar.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    // MARK: UIBarPositioningDelegate
-    func positionForBar(bar: UIBarPositioning) -> UIBarPosition {
-        return UIBarPosition.TopAttached
     }
     
     // MARK: UICollectionViewDataSource
