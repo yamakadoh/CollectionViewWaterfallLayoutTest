@@ -18,6 +18,21 @@ class WebViewController: UIViewController, UIWebViewDelegate, UIGestureRecognize
         // Do any additional setup after loading the view, typically from a nib.
         
         // -----------------------------
+        // UINavigationBar
+        // -----------------------------
+        // タイトル
+        self.navigationItem.title = "長いタイトルは3点リーダが自動的につく"
+        
+        // ボタン
+        let image = UIImage(named: "category1.png")
+        let customViewCategory = UIButton.buttonWithType(.Custom) as UIButton
+        customViewCategory.setBackgroundImage(image, forState: UIControlState.Normal)
+        customViewCategory.addTarget(self, action: "onTapNavigationBarCategory:", forControlEvents: UIControlEvents.TouchUpInside)
+        customViewCategory.bounds = CGRect(x: 0, y: 0, width: image!.size.width/2, height: image!.size.height/2)
+        let buttonCategory = UIBarButtonItem(customView: customViewCategory)
+        self.navigationItem.rightBarButtonItem = buttonCategory
+        
+        // -----------------------------
         // UIWebView
         // -----------------------------
         webView.delegate = self
@@ -126,4 +141,13 @@ class WebViewController: UIViewController, UIWebViewDelegate, UIGestureRecognize
     func onTapToolbarMenu(sender: UIBarButtonItem) {
         println("[onTapToolbarMenu]")
     }
+
+    // UINavigationBarタップイベントハンドラ
+    func onTapNavigationBarCategory(sender: UIBarButtonItem) {
+        println("[onTapNavigationBarCategory]")
+        // 画面遷移
+        let tableViewController = TableViewController()
+        self.navigationController?.pushViewController(tableViewController, animated: true)
+    }
+    
 }
