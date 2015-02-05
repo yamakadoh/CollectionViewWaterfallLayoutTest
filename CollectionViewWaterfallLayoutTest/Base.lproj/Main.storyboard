@@ -26,29 +26,15 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="BKu-iM-5o7">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="BKu-iM-5o7" customClass="MyCollectionViewCell" customModule="CollectionViewWaterfallLayoutTest" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="150" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YyE-Qz-cqd">
-                                                    <rect key="frame" x="0.0" y="0.0" width="150" height="100"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <color key="backgroundColor" red="0.99924079099999996" green="1" blue="0.7099451618" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstItem="YyE-Qz-cqd" firstAttribute="top" secondItem="BKu-iM-5o7" secondAttribute="top" id="2mg-IS-5La"/>
-                                            <constraint firstAttribute="bottom" secondItem="YyE-Qz-cqd" secondAttribute="bottom" id="3lj-d9-eer"/>
-                                            <constraint firstItem="YyE-Qz-cqd" firstAttribute="leading" secondItem="BKu-iM-5o7" secondAttribute="leading" id="lcZ-7I-LrS"/>
-                                            <constraint firstAttribute="trailing" secondItem="YyE-Qz-cqd" secondAttribute="trailing" id="pWE-jT-YUQ"/>
-                                        </constraints>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
