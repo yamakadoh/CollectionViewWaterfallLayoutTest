@@ -8,17 +8,35 @@
 
 import UIKit
 
+protocol MyCollectionViewHeaderDelegate: class {
+    func onTapMenuButton(sender: UIButton)
+}
+
 class MyCollectionViewHeader: UICollectionReusableView {
+    var buttonMenu = UIButton()
+    let delegate: MyCollectionViewHeaderDelegate? = nil
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = UIColor.grayColor()
-
+        
+        // トップ画像
         let image = UIImage(named: "top1.png")!
         let imageSize = CGSize(width: UIScreen.mainScreen().bounds.width, height: UIScreen.mainScreen().bounds.width * image.size.height / image.size.width)
         println("HeaderImageSize = \(imageSize)")
         let imageView = UIImageView(frame: CGRect(origin: CGPointZero, size: imageSize))
         imageView.image = image
         addSubview(imageView)
+        
+        // メニューボタン
+        let buttonSize: CGFloat = 30
+        let icon = FAKIonIcons.naviconRoundIconWithSize(buttonSize)
+        icon.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor())
+        let buttonImage = icon.imageWithSize(CGSize(width: buttonSize, height: buttonSize))
+        buttonMenu.frame = CGRect(x: CGFloat(UIScreen.mainScreen().bounds.width - buttonSize - 5), y: 20, width: buttonSize, height: buttonSize)
+        buttonMenu.setBackgroundImage(buttonImage, forState: UIControlState.Normal)
+        buttonMenu.addTarget(self.delegate?, action: "onTapMenuButton:", forControlEvents: UIControlEvents.TouchUpInside)
+        addSubview(buttonMenu)
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -81,7 +99,7 @@ class MyCollectionViewCell: UICollectionViewCell {
     }
 }
 
-class ViewController: UIViewController, UICollectionViewDataSource, CollectionViewWaterfallLayoutDelegate, UIGestureRecognizerDelegate {
+class ViewController: UIViewController, UICollectionViewDataSource, CollectionViewWaterfallLayoutDelegate, UIGestureRecognizerDelegate, MyCollectionViewHeaderDelegate {
 
     @IBOutlet var collectionView: UICollectionView!
     var appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
@@ -179,13 +197,18 @@ class ViewController: UIViewController, UICollectionViewDataSource, CollectionVi
         println("[sizeForItemAtIndexPath]cellSizes[\(indexPath.item)]=\(cellSizes[indexPath.item])")
         return cellSizes[indexPath.item]
     }
-
+    
     // UIScrollViewタップイベントハンドラ
     func onTapScrollView(sender: UITapGestureRecognizer) -> Void {
         println("[onTapScrollView]called")
         // 画面遷移
         let webViewController = WebViewController()
         self.navigationController?.pushViewController(webViewController, animated: true)
+    }
+    
+    // メニューボタン タップイベントハンドラ
+    func onTapMenuButton(sender: UIButton) -> Void {
+        println("[onTapMenuButton]called")
     }
 }
 
